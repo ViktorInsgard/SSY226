@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.295
+ * Model version                  : 1.317
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue Nov 14 17:14:10 2017
+ * C/C++ source code generated on : Thu Nov 16 13:40:51 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -79,6 +79,7 @@ void acquireLPSData(distanceMeasurement_t *d)
     d->y = dist.y;
     d->z = dist.z;
     d->distance = dist.distance;
+    d->anchorNumber = dist.anchorNumber;
 
     //DEBUG_PRINT("Logging LPS data: %f\n", (double)dist.distance);
   }
@@ -146,10 +147,34 @@ static void crazyflieModelTask(void* param)
     //rtU.LPS_x = sensorData.position.x;
     //rtU.LPS_y = sensorData.position.y;
     //rtU.LPS_z = sensorData.position.z;
-    rtU.Node_x0 = dist.x;
-    rtU.Node_y0 = dist.y;
-    rtU.Node_z0 = dist.z;
-    rtU.Dist_0 = dist.distance;
+
+    //DEBUG_PRINT("dist.anchorNumber: %i\n", dist.anchorNumber);
+    switch (dist.anchorNumber) {
+     case 0:
+      rtU.Dist_0 = dist.distance;
+      break;
+
+     case 1:
+      rtU.Dist_1 = dist.distance;
+      break;
+
+     case 2:
+      rtU.Dist_2 = dist.distance;
+      break;
+
+     case 3:
+      rtU.Dist_3 = dist.distance;
+      break;
+
+     case 4:
+      rtU.Dist_4 = dist.distance;
+      break;
+
+     case 5:
+      rtU.Dist_5 = dist.distance;
+      break;
+    }
+
     rtU.Range_sensor = sensorData.zrange.distance;
     rtU.Base_Thrust = setpoint.thrust;
     rtU.Ref_Roll = setpoint.attitude.roll;

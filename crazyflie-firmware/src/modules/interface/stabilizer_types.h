@@ -111,6 +111,7 @@ typedef struct distanceMeasurement_s {
   };
   float distance;
   float stdDev;
+  int anchorNumber;
 } distanceMeasurement_t;
 
 typedef struct zDistance_s {

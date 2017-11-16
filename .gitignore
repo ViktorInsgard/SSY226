@@ -1,1 +1,12 @@
-crazyflie-software/simulink-model/
+/crazyflie-software/simulink-model/slprj/
+/crazyflie-software/simulink-model/crazyflie_ert_rtw/
+/crazyflie-software/simulink-model/closed_loop.slx
+/crazyflie-software/simulink-model/closed_loop_script.m
+/crazyflie-software/simulink-model/crazyflie.slx
+/crazyflie-software/simulink-model/crazyflie_wrapper_loco.asv
+/crazyflie-software/simulink-model/open_loop.slx
+/crazyflie-software/.vs/
+/crazyflie-software/src/.vs/
+/crazyflie-software/bin/
+/crazyflie-software/Debug/
+/crazyflie-software/generated-test/

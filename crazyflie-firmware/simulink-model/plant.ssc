@@ -1,0 +1,74 @@
+component plant
+%Plant of quadrocopter
+
+inputs
+   ctrl={[0;0;0;0],'N'}; %Thrust:left
+end
+
+outputs
+    pos={[0;0;0],'m'}; %Position:right
+    v = {[0;0;0], 'm/s' }; %Velocity:right
+    a = {[0;0;0], 'm/s^2' }; %Acceleration:right
+    
+    angle = {[0;0;0],'1'};%Angle:right
+    w = {[0;0;0],'1/s'};%Angular velocity:right
+end
+
+parameters
+    m = {0.027,'kg'};%Mass
+    g = {9.81,'m/s^2'};%Gravity
+    d = {0.046,'m'};%Arm length
+    k = {1e-9,'1/m'};%Lift constant
+    b = {2.75e-11,'1'};%Drag constant
+end
+
+parameters(Access=private)    
+    %Moment of inertia matrix
+    Jx = {1.395e-5,'kg*m^2'};
+    Jy = {1.436e-5,'kg*m^2'};
+    Jz = {2.173e-5,'kg*m^2'};
+    J = [Jx,0,0;0,Jy,0;0,0,Jz];
+
+    % Add time invariant parameters here 
+
+end
+
+variables(Access=private)
+    
+    % Add time variant variables here
+    R_x = {[1 0 0; 0 1 0; 0 0 1], '1'}; %Rotation matrix, Roll 
+    R_y = {[1 0 0; 0 1 0; 0 0 1], '1'}; %Rotation matrix, Pitch
+    R_z = {[1 0 0; 0 1 0; 0 0 1], '1'}; %Rotation matrix, Yaw
+    R = {[1 0 0; 0 1 0; 0 0 1], '1'};   %Rotation matrix
+    T = {0, 'N'};                       %Total thrust
+    tau_x = {0, 'N*m'};                 %Rolling torque
+    tau_y = {0, 'N*m'};                 %Pitching torque
+    tau_z = {0, 'N*m'};                 %Yawing torque
+    Q = {[0; 0; 0; 0], 'N*m'};          %Motor torque
+
+end
+
+equations
+
+    % Add all equations here 
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % REPLACE/REMOVE ALL THESE EQUATIONS
+    pos.der == v;
+    v.der == a;
+    angle.der == w;
+    Q == (b/k)*ctrl;
+    R_x == [1 0 0; 0 cos(angle(1)) -sin(angle(1)); 0 sin(angle(1)) cos(angle(1))];
+    R_y == [cos(angle(2)) 0 sin(angle(2)); 0 1 0; -sin(angle(2)) 0 cos(angle(2))];
+    R_z == [cos(angle(3)) -sin(angle(3)) 0; sin(angle(3)) cos(angle(3)) 0; 0 0 1];
+    R == R_x*R_y*R_z;
+    T == ctrl(1)+ctrl(2)+ctrl(3)+ctrl(4);
+    a == R*[0; 0; T/m] - [0; 0; g];
+    tau_x == d/sqrt(2)*(ctrl(3)+ctrl(4)-ctrl(1)-ctrl(2));
+    tau_y == d/sqrt(2)*(ctrl(2)+ctrl(3)-ctrl(1)-ctrl(4));
+    tau_z == Q(2)+Q(4)-Q(1)-Q(3);
+    J*w.der == cross(-w,J*w) + [tau_x; tau_y; tau_z];
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end
+end

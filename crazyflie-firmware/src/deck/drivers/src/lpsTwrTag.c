@@ -43,6 +43,8 @@
 
 #include "crazyflieModel.h"
 
+#include "debug.h"
+
 // Outlier rejection
 #define RANGING_HISTORY_LENGTH 32
 #define OUTLIER_TH 4
@@ -204,6 +206,7 @@ static uint32_t rxcallback(dwDevice_t *dev) {
         dist.y = options->anchorPosition[current_anchor].y;
         dist.z = options->anchorPosition[current_anchor].z;
         dist.stdDev = 0.25;
+		dist.anchorNumber = current_anchor;
         //estimatorKalmanEnqueueDistance(&dist);
 		crazyflieModelEnqueueDistance(&dist);
       }
