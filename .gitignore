@@ -1,7 +1,5 @@
 build_info.json
 
-^crazyflie-firmware/bin/dep/all
-crazyflie-firmware/bin/*
 crazyflie-firmware/.cproject
 crazyflie-firmware/.project
 crazyflie-firmware/.settings/*
