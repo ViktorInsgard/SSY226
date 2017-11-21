@@ -1,5 +1,5 @@
 function [f,F] = motionModel(x,T)
-%x=[x, y, z, x_dot, y_dot, z_dot]
+%x=[phi, theta, psi, phidot, thetadot, psidot, x, y, z, x_dot, y_dot, z_dot]
 % TODO Implement zRanger and gyroscope
 % x      [12 x 1] 
 % f      [12 x 1]
