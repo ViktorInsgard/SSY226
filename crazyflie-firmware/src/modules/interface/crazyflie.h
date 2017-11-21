@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.317
+ * Model version                  : 1.335
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Nov 16 13:40:51 2017
+ * C/C++ source code generated on : Thu Nov 16 15:42:09 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -40,13 +40,13 @@ typedef struct {
   real_T Gyro_x;                       /* '<Root>/Gyro_x' */
   real_T Gyro_y;                       /* '<Root>/Gyro_y' */
   real_T Gyro_z;                       /* '<Root>/Gyro_z' */
-  real_T Range_sensor;                 /* '<Root>/Range_sensor' */
   real_T Dist_0;                       /* '<Root>/Dist_0' */
   real_T Dist_1;                       /* '<Root>/Dist_1' */
   real_T Dist_2;                       /* '<Root>/Dist_2' */
   real_T Dist_3;                       /* '<Root>/Dist_3' */
   real_T Dist_4;                       /* '<Root>/Dist_4' */
   real_T Dist_5;                       /* '<Root>/Dist_5' */
+  real_T Range_sensor;                 /* '<Root>/Range_sensor' */
 } ExtU;
 
 /* External outputs (root outports fed by signals with auto storage) */

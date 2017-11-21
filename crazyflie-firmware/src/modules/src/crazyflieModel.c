@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.317
+ * Model version                  : 1.335
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Nov 16 13:40:51 2017
+ * C/C++ source code generated on : Thu Nov 16 15:42:09 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -128,11 +128,11 @@ static void crazyflieModelTask(void* param)
   // Wait for sensors to be calibrated
   lastWakeTime = xTaskGetTickCount ();
   while (!sensorsAreCalibrated()) {
-    vTaskDelayUntil(&lastWakeTime, M2T(10.0));
+    vTaskDelayUntil(&lastWakeTime, M2T(2.0));
   }
 
   while (1) {
-    vTaskDelayUntil(&lastWakeTime, M2T(10.0));
+    vTaskDelayUntil(&lastWakeTime, M2T(2.0));
     sensorsAcquire(&sensorData, tick);
     commanderGetSetpoint(&setpoint, &state);
     distanceMeasurement_t dist;
@@ -143,12 +143,6 @@ static void crazyflieModelTask(void* param)
     rtU.Gyro_x = sensorData.gyro.x;
     rtU.Gyro_y = sensorData.gyro.y;
     rtU.Gyro_z = sensorData.gyro.z;
-
-    //rtU.LPS_x = sensorData.position.x;
-    //rtU.LPS_y = sensorData.position.y;
-    //rtU.LPS_z = sensorData.position.z;
-
-    //DEBUG_PRINT("dist.anchorNumber: %i\n", dist.anchorNumber);
     switch (dist.anchorNumber) {
      case 0:
       rtU.Dist_0 = dist.distance;
