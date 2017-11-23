@@ -1,4 +1,5 @@
 function [f,F] = motionModel(x,T)
+% Might not be used
 %x=[phi, theta, psi, phidot, thetadot, psidot, x, y, z, x_dot, y_dot, z_dot]
 % TODO Implement zRanger and gyroscope
 % x      [12 x 1] 
@@ -39,15 +40,15 @@ F=[ 1 0 0 T 0 0 0 0 0 0 0 0; %phi           %%%
     0 0 1 0 0 T 0 0 0 0 0 0; %psi           %%%
          
     0 0 0 1 0 0 0 0 0 0 0 0; %phidot        %%%
-    0 0 0 0 1 0 0 0 0 0 0 0; %thetadot      %%% gyr data
+    0 0 0 0 1 0 0 0 0 0 0 0; %thetadot      %%%
     0 0 0 0 0 1 0 0 0 0 0 0; %psidot        %%%
     
     0 0 0 0 0 0 1 0 0 T 0 0; %x - to be integrated   %%%
-    0 0 0 0 0 0 0 1 0 0 T 0; %y - to be integrated   %%% Acc data
+    0 0 0 0 0 0 0 1 0 0 T 0; %y - to be integrated   %%% 
     0 0 0 0 0 0 0 0 1 0 0 T; %z - to be integrated   %%%
     
     0 0 0 0 0 0 0 0 0 1 0 0; %xdot - to be integrated   %%%
-    0 0 0 0 0 0 0 0 0 0 1 0; %ydot - to be integrated   %%% Acc data
+    0 0 0 0 0 0 0 0 0 0 1 0; %ydot - to be integrated   %%% 
     0 0 0 0 0 0 0 0 0 0 0 1];%zdot - to be integrated  %%%
     
 % Verify F matrix
