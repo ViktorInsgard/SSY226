@@ -27,13 +27,15 @@ Hx=[(x(1)-s(1,1))/R1 (x(2)-s(1,2))/R1 (x(3)-s(1,3))/R1 ;
     (x(1)-s(5,1))/R5 (x(2)-s(5,2))/R5 (x(3)-s(5,3))/R5 ;
     (x(1)-s(6,1))/R6 (x(2)-s(6,2))/R6 (x(3)-s(6,3))/R6 ];
 
-Sk=Hx*P(7:9,7:9)*Hx.' + R;                            % Innovation covariance
-Kk=P(7:9,7:9)*Hx.'/Sk;                                 % The Kalman gain
-vk=(y(7:9)-hx);                                 % The innovation
-Ptemp=P(7:9,7:9)-Kk*Sk*Kk.';                               % Updated estimate covariance
-xtemp=x+Kk*vk;                                    % Updated state estimate
- Pf=1;
- xf=1;
+Sk = Hx*P(7:9,7:9)*Hx.' + R;                                 % Innovation covariance
+Kk = P(7:9,7:9)*Hx.'/Sk;                                          % The Kalman gain
+vk = (y(7:9)-hx);                                                          % The innovation
+Ptemp = P(7:9,7:9)-Kk*Sk*Kk.';                              % Updated estimate covariance
+xtemp = x+Kk*vk;                                                      % Updated state estimate
+ P(7:9,7:9)=Ptemp;
+ Pf=P;
+ x(7:9)=xtemp;
+ xf=x;
 
 
 
