@@ -10,8 +10,13 @@ function [xf,Pf] = updateAcc(x,y, P, T, R)
 %   Pp           [12 x 12] predicted state covariance
 %
 
-Hx = 
-hx =
+% Measurement model, assuming the quadcopter is at rest (it is not)
+Hx = [-cos(x(1)), zeros(1,11);
+      cos(x(2))*cos(x(1)), -sin(x(2))*sin(x(1)), zeros(1,10);
+      -cos(x(2))*sin(x(1)), -sin(x(2))*cos(x(1)), zeros(1,10)];
+hx = [-sin(x(2));
+      cos(x(2))*sin(x(1));
+      cos(x(2))*cos(x(1))];
 
 % Update step for accelerometer
 Sk=Hx*P*Hx.' + R;                            % Innovation covariance
