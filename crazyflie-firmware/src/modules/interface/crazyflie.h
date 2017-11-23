@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.335
+ * Model version                  : 1.370
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Nov 16 15:42:09 2017
+ * C/C++ source code generated on : Thu Nov 23 16:10:53 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -77,16 +77,20 @@ extern void crazyflie_terminate(void);
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S10>/Atan2' : Unused code path elimination
+ * Block '<S11>/Atan2' : Unused code path elimination
+ * Block '<S11>/Gain' : Unused code path elimination
+ * Block '<S11>/Product' : Unused code path elimination
+ * Block '<S11>/Product1' : Unused code path elimination
+ * Block '<S11>/Sqrt' : Unused code path elimination
+ * Block '<S11>/Sum' : Unused code path elimination
+ * Block '<S12>/Atan2' : Unused code path elimination
  * Block '<Root>/ToDouble' : Eliminate redundant data type conversion
  * Block '<Root>/ToDouble1' : Eliminate redundant data type conversion
  * Block '<Root>/ToDouble2' : Eliminate redundant data type conversion
  * Block '<Root>/ToDouble3' : Eliminate redundant data type conversion
  * Block '<Root>/ToDouble4' : Eliminate redundant data type conversion
  * Block '<Root>/ToDouble5' : Eliminate redundant data type conversion
- * Block '<Root>/ToUint16' : Eliminate redundant data type conversion
- * Block '<Root>/ToUint16_1' : Eliminate redundant data type conversion
- * Block '<Root>/ToUint16_2' : Eliminate redundant data type conversion
- * Block '<Root>/ToUint16_3' : Eliminate redundant data type conversion
  */
 
 /*-
@@ -104,6 +108,18 @@ extern void crazyflie_terminate(void);
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'crazyflie'
+ * '<S1>'   : 'crazyflie/  &#x3C9;rad '
+ * '<S2>'   : 'crazyflie/EKF'
+ * '<S3>'   : 'crazyflie/Subsystem3'
+ * '<S4>'   : 'crazyflie/  &#x3C9;rad /OmegadotX'
+ * '<S5>'   : 'crazyflie/  &#x3C9;rad /OmegadotY'
+ * '<S6>'   : 'crazyflie/  &#x3C9;rad /OmegadotZ'
+ * '<S7>'   : 'crazyflie/  &#x3C9;rad /OmegadotX/Degrees to Radians'
+ * '<S8>'   : 'crazyflie/  &#x3C9;rad /OmegadotY/Degrees to Radians'
+ * '<S9>'   : 'crazyflie/  &#x3C9;rad /OmegadotZ/Degrees to Radians'
+ * '<S10>'  : 'crazyflie/Subsystem3/Subsystem'
+ * '<S11>'  : 'crazyflie/Subsystem3/Subsystem1'
+ * '<S12>'  : 'crazyflie/Subsystem3/Subsystem2'
  */
 #endif                                 /* RTW_HEADER_crazyflie_h_ */
 

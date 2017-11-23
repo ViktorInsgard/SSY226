@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.335
+ * Model version                  : 1.370
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Nov 16 15:42:09 2017
+ * C/C++ source code generated on : Thu Nov 23 16:10:53 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -31,40 +31,50 @@ ExtY rtY;
 void crazyflie_step(void)
 {
   /* Outport: '<Root>/Log1' incorporates:
-   *  Inport: '<Root>/Dist_0'
+   *  Inport: '<Root>/Acc_x'
    */
-  rtY.Log1 = rtU.Dist_0;
+  rtY.Log1 = rtU.Acc_x;
 
   /* Outport: '<Root>/Log2' incorporates:
-   *  Inport: '<Root>/Dist_1'
+   *  Inport: '<Root>/Acc_y'
    */
-  rtY.Log2 = rtU.Dist_1;
+  rtY.Log2 = rtU.Acc_y;
 
   /* Outport: '<Root>/Log3' incorporates:
-   *  Inport: '<Root>/Dist_2'
+   *  Inport: '<Root>/Acc_y'
    */
-  rtY.Log3 = rtU.Dist_2;
+  rtY.Log3 = rtU.Acc_y;
 
   /* Outport: '<Root>/Log4' incorporates:
-   *  Inport: '<Root>/Dist_3'
+   *  Inport: '<Root>/Gyro_x'
    */
-  rtY.Log4 = rtU.Dist_3;
+  rtY.Log4 = rtU.Gyro_x;
 
   /* Outport: '<Root>/Log5' incorporates:
-   *  Inport: '<Root>/Dist_4'
+   *  Inport: '<Root>/Gyro_y'
    */
-  rtY.Log5 = rtU.Dist_4;
+  rtY.Log5 = rtU.Gyro_y;
 
   /* Outport: '<Root>/Log6' incorporates:
-   *  Inport: '<Root>/Dist_5'
+   *  Inport: '<Root>/Gyro_z'
    */
-  rtY.Log6 = rtU.Dist_5;
+  rtY.Log6 = rtU.Gyro_z;
 }
 
 /* Model initialize function */
 void crazyflie_initialize(void)
 {
-  /* (no initialization code required) */
+  /* ConstCode for Outport: '<Root>/Motor_1' */
+  rtY.Motor_1 = 15000U;
+
+  /* ConstCode for Outport: '<Root>/Motor_2' */
+  rtY.Motor_2 = 15000U;
+
+  /* ConstCode for Outport: '<Root>/Motor_3' */
+  rtY.Motor_3 = 15000U;
+
+  /* ConstCode for Outport: '<Root>/Motor_4' */
+  rtY.Motor_4 = 15000U;
 }
 
 /* Model terminate function */
