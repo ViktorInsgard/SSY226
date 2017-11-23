@@ -18,9 +18,7 @@ crazyflie-firmware/generated-test/**
 
 crazyflie-firmware/simulink-model/crazyflie_ert_rtw/
 crazyflie-firmware/simulink-model/slprj/
-crazyflie-firmware/simulink-model/closed_loop.slx
 crazyflie-firmware/simulink-model/open_loop.slx
-crazyflie-firmware/simulink-model/crazyflie.slx
 crazyflie-firmware/simulink-model/crazyflie_wrapper_loco.asv
 
 crazyflie-firmware/src/modules/interface/crazyflie.h
