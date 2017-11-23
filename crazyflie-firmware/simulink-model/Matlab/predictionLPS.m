@@ -17,7 +17,7 @@ R = R_x*R_y*R_z;
 
 F=[eye(3) T*eye(3); zeros(3) eye(3)];    %F
 
-xtemp=F*x(7:12) + [0; 0; 0; R*[0; 0; u_thrust]];
+xtemp=F*x(7:12) + [0; 0; 0; R*[0; 0; u_thrust]] - [0; 0; 0; 0; 0; -9.82];
 xp=[ xtemp; x(7:12)]; 
 Ptemp=F*P(7:12,7:12)*F.'+Q(7:12,7:12);
 P(7:12,7:12)=Ptemp;
