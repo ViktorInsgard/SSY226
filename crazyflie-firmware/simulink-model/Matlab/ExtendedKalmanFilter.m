@@ -30,8 +30,5 @@ function [xf, Pf] = ExtendedKalmanFilter(measurements, statePrior, priorCovarian
 %update ACC
 %update LPS
 %Update Zranger
-    
-xp(:,end)=[];
-Pp(:,:,end)=[];
 end
 
