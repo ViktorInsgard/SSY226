@@ -15,3 +15,14 @@ T=0.02;
 % Temporary untill we have better
  statePrior = ones(12,1);
  priorCovariance=eye(12);
+
+ sensor_position = [1 2 3;
+                                  1 2 3;
+                                  1 2 3;
+                                  1 2 3;
+                                  1 2 3;
+                                  1 2 3;];
+ 
+ 
+ 
+ 
