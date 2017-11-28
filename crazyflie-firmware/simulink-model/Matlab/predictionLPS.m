@@ -15,7 +15,7 @@ R_y = [cos(x(5)) 0 sin(x(5)); 0 1 0; -sin(x(5)) 0 cos(x(5))]; %Rotation matrix, 
 R_z = [cos(x(6)) -sin(x(6)) 0; sin(x(6)) cos(x(6)) 0; 0 0 1]; %Rotation matrix, Yaw
 R = R_x*R_y*R_z;
 
-F=[eye(3) T*eye(3); zeros(3) eye(3)];    %F
+F=[eye(3) T*eye(3); zeros(3) eye(3)];    % Constant velocity
 
 xtemp=F*x(7:12) + [0; 0; 0; R*[0; 0; u_thrust]] - [0; 0; 0; 0; 0; -9.82];
 xp=[ xtemp; x(7:12)]; 
