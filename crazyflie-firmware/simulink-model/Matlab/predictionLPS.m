@@ -1,4 +1,4 @@
-function [xp,Pp]= predictionLPS(x, u_thrust, P, T,Q)
+function [xp,Pp]= predictionLPS(x, P, T,Q, u_thrust)
 % The prediction for x y z 
 %Input:
 %   x            [12 x 1] Prior mean
