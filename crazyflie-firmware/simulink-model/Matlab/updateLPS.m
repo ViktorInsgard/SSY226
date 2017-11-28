@@ -1,10 +1,12 @@
-function [xf,Pf] = updateLPS(x,y, P, T,R)
+function [xf,Pf] = updateLPS(x,y, s,P, T,R)
 % The update for x y z 
 %Input:
-%   x           [12 x 1] Prior mean
-%   P           [12 x 12] Prior covariance
-%  T                           Sampling time
-%  R            [6 x 6] Measurement noise
+%   x            [12 x 1]     Prior mean
+%   P            [12 x 12]  Prior covariance
+%   y            [12 x ]      LPS  measurements
+%  s              [6 x 3]    Sensor positions
+%  T                             Sampling time
+%  R            [6 x 6]      Measurement noise
 %Output:
 %   x f          [12 x 1] Updated state mean
 %   Pf           [12 x 12] Updated state covariance
@@ -27,20 +29,16 @@ Hx=[(x(1)-s(1,1))/R1 (x(2)-s(1,2))/R1 (x(3)-s(1,3))/R1 ;
     (x(1)-s(5,1))/R5 (x(2)-s(5,2))/R5 (x(3)-s(5,3))/R5 ;
     (x(1)-s(6,1))/R6 (x(2)-s(6,2))/R6 (x(3)-s(6,3))/R6 ];
 
-Sk = Hx*P(7:9,7:9)*Hx.' + R;                                 % Innovation covariance
+Sk = Hx*P(7:9,7:9)*Hx.' + R;                                  % Innovation covariance
 Kk = P(7:9,7:9)*Hx.'/Sk;                                          % The Kalman gain
 vk = (y(7:9)-hx);                                                          % The innovation
 Ptemp = P(7:9,7:9)-Kk*Sk*Kk.';                              % Updated estimate covariance
 xtemp = x+Kk*vk;                                                      % Updated state estimate
+
  P(7:9,7:9)=Ptemp;
  Pf=P;
  x(7:9)=xtemp;
  xf=x;
-
-
-
-
-
 
 end
 
