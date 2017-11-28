@@ -16,10 +16,10 @@ function [xf, Pf] = ExtendedKalmanFilter(measurements)
 
 
 
-[xp Pp]=predictionGyro(statePrior, priorCovariance, T,Q_gyro)  %Prediction With Gyro
-[xp Pp]=predictionLPS(xp, Pp, T,R_LPS)                                        %Prediction With LPS
-[xf Pf]=updateAcc(xp, Pp, T,R_acc)                                        % Update With accelerometer
-[xf Pf]=updateLPS(xf, Pf, T,R_LPS)                                        % Update With LPS
+[xp Pp]=predictionGyro(statePrior, measurements,priorCovariance, T,Q_gyro); %Prediction With Gyro
+[xp Pp]=predictionLPS(xp, Pp, T,R_LPS);                                                %Prediction With LPS
+[xf Pf]=updateAcc(xp, measurements, Pp, T,R_acc);                                                 % Update With accelerometer
+[xf Pf]=updateLPS(xf, measurements, sensor_position, Pf, T,R_LPS);                    % Update With LPS
 
 
 end
