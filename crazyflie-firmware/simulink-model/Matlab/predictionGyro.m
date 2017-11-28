@@ -1,4 +1,4 @@
-function [xp,Pp] = predictionGyro(x, omega,P, T,Q)
+function [xp,Pp] = predictionGyro(x, measurement,P, T,Q)
 %
 %Input:
 %   x           [12 x 1] Prior mean
@@ -10,9 +10,9 @@ function [xp,Pp] = predictionGyro(x, omega,P, T,Q)
 %   x p          [12 x 1] predicted state mean
 %   Pp           [12 x 12] predicted state covariance
 %
-R_x = [1 0 0; 0 cos(omega(1)) -sin(omega(1)); 0 sin(omega(1)) cos(omega(1))]; %Rotation matrix, Roll 
-R_y = [cos(omega(2)) 0 sin(omega(2)); 0 1 0; -sin(omega(2)) 0 cos(omega(2))]; %Rotation matrix, Pitch
-R_z = [cos(omega(3)) -sin(omega(3)) 0; sin(omega(3)) cos(omega(3)) 0; 0 0 1]; %Rotation matrix, Yaw
+R_x = [1 0 0; 0 cos(measurement(1)) -sin(measurement(1)); 0 sin(measurement(1)) cos(measurement(1))]; %Rotation matrix, Roll 
+R_y = [cos(measurement(2)) 0 sin(measurement(2)); 0 1 0; -sin(measurement(2)) 0 cos(measurement(2))]; %Rotation matrix, Pitch
+R_z = [cos(measurement(3)) -sin(measurement(3)) 0; sin(measurement(3)) cos(measurement(3)) 0; 0 0 1]; %Rotation matrix, Yaw
 R = R_x*R_y*R_z;
 
 F=[eye(3) T*R; zeros(3) eye(3)];    %Constant velocity

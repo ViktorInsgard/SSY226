@@ -1,4 +1,4 @@
-function [xp,Pp]= predictionLPS(x, P, T,Q, u_thrust)
+function [xp,Pp]= predictionLPS(x, P, T,Q,u_thrust)
 % The prediction for x y z 
 %Input:
 %   x            [12 x 1] Prior mean
@@ -17,7 +17,8 @@ R = R_x*R_y*R_z;
 
 F=[eye(3) T*eye(3); zeros(3) eye(3)];    % Constant velocity
 
-xtemp=F*x(7:12) + [0; 0; 0; R*[0; 0; u_thrust]] - [0; 0; 0; 0; 0; -9.82];
+xtemp=F*x(7:12) +  [0; 0; 0; R*[0; 0; u_thrust*T]]- [0; 0; 0; 0; 0; -9.8173*T];
+
 xp=[ xtemp; x(7:12)]; 
 Ptemp=F*P(7:12,7:12)*F.'+Q(7:12,7:12);
 P(7:12,7:12)=Ptemp;
