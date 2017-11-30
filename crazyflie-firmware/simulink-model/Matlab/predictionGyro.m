@@ -15,11 +15,15 @@ F=[eye(3) T*eye(3); zeros(3) eye(3)];    %Constant velocity
      
 
 %Kalman prediction
-xtemp=[x(1:3) + T*measurement(1:3); measurement(1:3)];
-xp=[ xtemp; x(7:12)]; 
-Ptemp=F*P(1:6,1:6)*F.'+Q(1:6,1:6);
-P(1:6,1:6)=Ptemp;
-Pp=P;
+
+x(1)=x(1)+T*measurement(1);
+x(2)=x(2)+T*measurement(2);
+x(3)=x(3)+T*measurement(3);
+x(4)=measurement(1);
+x(5)=measurement(2);
+x(6)=measurement(3);
+P(1:6,1:6)=F*P(1:6,1:6)*F.'+Q(1:6,1:6);
+
 
 
 
