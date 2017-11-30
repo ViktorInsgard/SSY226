@@ -51,7 +51,7 @@
 #include "zranger.h"
 #include "vl53l0x.h"
 #include "locodeck.h"
-
+#include "crazyflie_data.c"
 
 
   %closefile typesBuf
