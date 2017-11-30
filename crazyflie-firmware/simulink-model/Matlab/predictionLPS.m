@@ -1,4 +1,4 @@
-function [xp,Pp]= predictionLPS(x, P, T,Q,u_thrust)
+function [x,P]= predictionLPS(x, P, T,Q,u_thrust)
 % The prediction for x y z 
 %Input:
 %   x            [12 x 1] Prior mean
@@ -10,20 +10,18 @@ function [xp,Pp]= predictionLPS(x, P, T,Q,u_thrust)
 %   x p          [12 x 1] predicted state mean
 %   Pp           [12 x 12] predicted state covariance
 %
-R_x = [1 0 0; 0 cos(x(4)) -sin(x(4)); 0 sin(x(4)) cos(x(4))]; %Rotation matrix, Roll 
-R_y = [cos(x(5)) 0 sin(x(5)); 0 1 0; -sin(x(5)) 0 cos(x(5))]; %Rotation matrix, Pitch
-R_z = [cos(x(6)) -sin(x(6)) 0; sin(x(6)) cos(x(6)) 0; 0 0 1]; %Rotation matrix, Yaw
-R = R_x*R_y*R_z;
 
 F=[eye(3) T*eye(3); zeros(3) eye(3)];    % Constant velocity
 
-xtemp=F*x(7:12) +  [0; 0; 0; R*[0; 0; u_thrust*T]]- [0; 0; 0; 0; 0; 9.8173*T];
+x(7) = x(7) + T*x(10);
+x(8) = x(8) + T*x(11);
+x(9) = x(9) + T*x(12);
 
-xp= [x(1:6); xtemp]; 
+x(10) = x(10) - sin(x(2))*T*u_thrust;
+x(11) = x(11) + cos(x(2))*sin(x(1))*T*u_thrust;
+x(12) = x(12) + cos(x(2))*cos(x(1))*T*u_thrust;
+ 
 P(7:12,7:12)=F*P(7:12,7:12)*F.'+Q(7:12,7:12);
-
-Pp=P;
-
 
 end
 
