@@ -68,8 +68,11 @@ crazyflieModel.o: src/modules/src/crazyflieModel.c \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dac.h \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h \
  src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h \
- src/modules/interface/crazyflie.h src/modules/interface/rtwtypes.h \
- src/modules/interface/crtp.h \
+ src/modules/interface/crazyflie.h \
+ /home/bitcraze/arm-none-eabi/include/string.h \
+ /home/bitcraze/arm-none-eabi/include/sys/cdefs.h \
+ /home/bitcraze/arm-none-eabi/include/sys/string.h \
+ src/modules/interface/rtwtypes.h src/modules/interface/crtp.h \
  src/modules/interface/crtp_localization_service.h \
  src/deck/drivers/interface/locodeck.h vendor/libdw1000/inc/libdw1000.h \
  vendor/libdw1000/inc/libdw1000Spi.h vendor/libdw1000/inc/dw1000.h \
@@ -78,7 +81,7 @@ crazyflieModel.o: src/modules/src/crazyflieModel.c \
  src/lib/FreeRTOS/include/queue.h src/lib/FreeRTOS/include/queue.h \
  src/deck/drivers/interface/zranger.h src/deck/interface/deck_core.h \
  src/modules/interface/estimator.h src/drivers/interface/vl53l0x.h \
- src/drivers/interface/i2cdev.h
+ src/drivers/interface/i2cdev.h src/modules/src/crazyflie_data.c
 
 src/modules/interface/rtwtypes.h:
 
@@ -246,6 +249,12 @@ src/lib/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h:
 
 src/modules/interface/crazyflie.h:
 
+/home/bitcraze/arm-none-eabi/include/string.h:
+
+/home/bitcraze/arm-none-eabi/include/sys/cdefs.h:
+
+/home/bitcraze/arm-none-eabi/include/sys/string.h:
+
 src/modules/interface/rtwtypes.h:
 
 src/modules/interface/crtp.h:
@@ -281,3 +290,5 @@ src/modules/interface/estimator.h:
 src/drivers/interface/vl53l0x.h:
 
 src/drivers/interface/i2cdev.h:
+
+src/modules/src/crazyflie_data.c:

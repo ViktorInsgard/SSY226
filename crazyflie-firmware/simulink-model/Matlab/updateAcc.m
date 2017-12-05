@@ -11,18 +11,18 @@ function [xf,Pf] = updateAcc(x,y, P, T, R_acc)
 %
 
 % Measurement model, assuming the quadcopter is at rest (it is not)
-Hx = [-cos(x(1)), zeros(1,11);
+Hx = [0, -cos(x(2)), zeros(1,10);
       cos(x(2))*cos(x(1)), -sin(x(2))*sin(x(1)), zeros(1,10);
       -cos(x(2))*sin(x(1)), -sin(x(2))*cos(x(1)), zeros(1,10);
       zeros(9,12)];    
 hx = [-sin(x(2));
-      cos(x(2))*sin(x(1));
-      cos(x(2))*cos(x(1))];
+           cos(x(2))*sin(x(1));
+           cos(x(2))*cos(x(1))];
 
 % Update step for accelerometer
 Sk=Hx(1:3,1:3)*P(1:3,1:3)*Hx(1:3,1:3).' + R_acc;                            % Innovation covariance
 Kk=P(1:3,1:3)*Hx(1:3,1:3).'/Sk;                                 % The Kalman gain
-vk=(y(1:3)-hx);                                 % The innovation
+vk=(y(4:6)-hx);                                 % The innovation
 Ptemp=P(1:3,1:3)-Kk*Sk*Kk.';                               % Updated estimate covariance
 xtemp=x(1:3)+Kk*vk;                                    % Updated state estimate
  

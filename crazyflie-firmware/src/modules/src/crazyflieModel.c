@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'crazyflie'.
  *
- * Model version                  : 1.370
+ * Model version                  : 1.512
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Nov 23 16:10:53 2017
+ * C/C++ source code generated on : Tue Dec  5 14:45:55 2017
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -38,6 +38,7 @@
 #include "zranger.h"
 #include "vl53l0x.h"
 #include "locodeck.h"
+#include "crazyflie_data.c"
 
 static void crazyflieModelTask(void* param);
 static bool isInit;
@@ -128,11 +129,11 @@ static void crazyflieModelTask(void* param)
   // Wait for sensors to be calibrated
   lastWakeTime = xTaskGetTickCount ();
   while (!sensorsAreCalibrated()) {
-    vTaskDelayUntil(&lastWakeTime, M2T(2.0));
+    vTaskDelayUntil(&lastWakeTime, M2T(1000.0));
   }
 
   while (1) {
-    vTaskDelayUntil(&lastWakeTime, M2T(2.0));
+    vTaskDelayUntil(&lastWakeTime, M2T(1000.0));
     sensorsAcquire(&sensorData, tick);
     commanderGetSetpoint(&setpoint, &state);
     distanceMeasurement_t dist;
