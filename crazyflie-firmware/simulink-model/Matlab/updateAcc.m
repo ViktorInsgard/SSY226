@@ -1,10 +1,11 @@
 function [xf,Pf] = updateAcc(x,y, P, T, R_acc)
 %
 %Input:
-%   y          [12 x 1] Prior mean
-%   P           [12 x 12] Prior covariance
-%   T           Sampling time
-% Q
+%  x           [12 x 1]    States
+%   y          [12 x 1]    Measurement
+%   P          [12 x 12] Covariance
+%   T          [1 x 1]    Sampling time
+%  R_acc   [3 x 3]    Measurement noise
 %Output:
 %   x p          [12 x 1] predicted state mean
 %   Pp           [12 x 12] predicted state covariance
