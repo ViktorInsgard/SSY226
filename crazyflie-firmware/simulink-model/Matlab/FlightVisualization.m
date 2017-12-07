@@ -3,7 +3,7 @@ fig = figure(1);
 quad = generateQuad([1 0 0]);
 p = plot3(quad(1,:), quad(2,:), quad(3,:));
 grid on; 
-axis([-5 5 -5 5 -5 5]);
+%axis([-25 25 -25 25 -25 25]);
 
 % Create timer object
 t = timer;
